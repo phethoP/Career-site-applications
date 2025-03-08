@@ -59,7 +59,9 @@ export interface Database {
           description: string;
           requirements: Json;
           responsibilities: Json;
+          benefits: Json;
           slug: string;
+          closing_date: string | null;
           created_at: string;
           updated_at: string;
         };
@@ -71,7 +73,9 @@ export interface Database {
           description: string;
           requirements: Json;
           responsibilities: Json;
+          benefits?: Json;
           slug: string;
+          closing_date?: string | null;
           created_at?: string;
           updated_at?: string;
         };
@@ -83,7 +87,9 @@ export interface Database {
           description?: string;
           requirements?: Json;
           responsibilities?: Json;
+          benefits?: Json;
           slug?: string;
+          closing_date?: string | null;
           created_at?: string;
           updated_at?: string;
         };

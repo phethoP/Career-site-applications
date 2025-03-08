@@ -61,6 +61,7 @@ export type Database = {
       }
       job_listings: {
         Row: {
+          benefits: Json | null
           closing_date: string | null
           created_at: string | null
           description: string
@@ -74,6 +75,7 @@ export type Database = {
           updated_at: string | null
         }
         Insert: {
+          benefits?: Json | null
           closing_date?: string | null
           created_at?: string | null
           description: string
@@ -87,6 +89,7 @@ export type Database = {
           updated_at?: string | null
         }
         Update: {
+          benefits?: Json | null
           closing_date?: string | null
           created_at?: string | null
           description?: string

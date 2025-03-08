@@ -9,34 +9,44 @@ type SupportingDocument =
   Database["public"]["Tables"]["supporting_documents"]["Insert"];
 
 export async function getJobListings(): Promise<JobListing[]> {
-  const { data, error } = await supabase
-    .from("job_listings")
-    .select("*")
-    .order("created_at", { ascending: false });
+  try {
+    const { data, error } = await supabase
+      .from("job_listings")
+      .select("*")
+      .order("created_at", { ascending: false });
 
-  if (error) {
-    console.error("Error fetching job listings:", error);
+    if (error) {
+      console.error("Error fetching job listings:", error);
+      return [];
+    }
+
+    return data || [];
+  } catch (err) {
+    console.error("Failed to fetch job listings:", err);
     return [];
   }
-
-  return data || [];
 }
 
 export async function getJobListingBySlug(
   slug: string,
 ): Promise<JobListing | null> {
-  const { data, error } = await supabase
-    .from("job_listings")
-    .select("*")
-    .eq("slug", slug)
-    .single();
+  try {
+    const { data, error } = await supabase
+      .from("job_listings")
+      .select("*")
+      .eq("slug", slug)
+      .single();
 
-  if (error) {
-    console.error("Error fetching job listing:", error);
+    if (error) {
+      console.error("Error fetching job listing:", error);
+      return null;
+    }
+
+    return data;
+  } catch (err) {
+    console.error("Failed to fetch job listing:", err);
     return null;
   }
-
-  return data;
 }
 
 export async function submitJobApplication(
